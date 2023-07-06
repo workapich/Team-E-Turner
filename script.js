@@ -1,6 +1,3 @@
-
-
-
 window.addEventListener("DOMContentLoaded", init);
 
 let timeout;
@@ -8,26 +5,9 @@ let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0
 let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))')
 
 function init() {
-
-    let cart = ["Vlada"];
-    let j = 0;
-    if (cart.length !== 0) {
-        const lista = document.getElementById("cartItem");
-        lista.innerHTML += "prazna korpa";
-
-    }
-
-
-
     const strengthBadge = document.getElementById('strengthDisp');
     const registerFirstname = document.querySelector('#registerFirstname');
     const registerLastname = document.querySelector('#registerLastname');
-
-
-    const registerPhoneNum = document.querySelector('#registerPhoneNum');
-
-    const registerAddress = document.querySelector('#registerAddress');
-
     const registerEmail = document.querySelector('#registerEmail');
     const registerPassword = document.querySelector('#registerPassword');
     const registerPasswordConfirm = document.querySelector('#registerPasswordConfirm');
@@ -114,9 +94,9 @@ function init() {
         resetButton.addEventListener('click', function (e) {
             const smalls = document.querySelectorAll('.field small');
             smalls.forEach((element) => {
-                element.innerText = '';
-                element.classList.remove('error');
-            }
+                    element.innerText = '';
+                    element.classList.remove('error');
+                }
             );
             strengthBadge.style.display = 'none'
         });
@@ -237,21 +217,6 @@ let validateForm = () => {
         hideErrorMessage(registerLastname);
     }
 
-    if (isEmpty(registerAddress.value.trim())) {
-        showErrorMessage(registerLastname, "Address can't be empty.");
-        isValid = false;
-    } else {
-        hideErrorMessage(registerLastname);
-    }
-
-
-    if (isEmpty(registerPhoneNum.value.trim())) {
-        showErrorMessage(registerPhoneNum, "Phone number can't be empty.");
-        isValid = false;
-    } else {
-        hideErrorMessage(registerPhoneNum);
-    }
-
     if (isEmpty(registerEmail.value.trim())) {
         showErrorMessage(registerEmail, 'Email can not be empty.');
         isValid = false;
@@ -324,8 +289,6 @@ const isPasswordStrong = () => {
     const strengthBadge = document.getElementById('strengthDisp');
     return strengthBadge.innerText === 'Strong';
 }
-
-
 
 
 

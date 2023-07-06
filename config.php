@@ -8,7 +8,14 @@ const PARAMS = [
     "CHARSET" => 'utf8mb4'
 ];
 
-const SITE = 'http://localhost/flopi_shop/'; // enter your path on localhost
+
+    $path = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+    $path .=$_SERVER["SERVER_NAME"]. dirname($_SERVER["PHP_SELF"]);        
+   $path.= "/";
+    define("SITE", $path);
+
+
+// const SITE = 'http://localhost/flopi_shop/'; // enter your path on localhost
 
 $dsn = "mysql:host=" . PARAMS['HOST'] . ";dbname=" . PARAMS['DBNAME'] . ";charset=" . PARAMS['CHARSET'];
 
