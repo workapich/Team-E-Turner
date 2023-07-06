@@ -60,7 +60,10 @@ if($_SESSION['id_user']==9)
 {
     
     if (isset($sql_str)) {
-        $sql = "SELECT id_bought,id_user ,naziv_hrane, ukupnaCena from bought ". $sql_str;
+        
+        $sql = "SELECT bought.id_bought, bought.id_user, users.firstname, bought.naziv_hrane, bought.ukupnaCena
+        FROM bought
+        INNER JOIN users ON bought.id_user = users.id_user ". $sql_str;
        
         // $sql = "SELECT id_nadrudzbine , vozila.slika ,vozila.cena , vozila.model from narudzbine INNER JOIN vozila ON narudzbine.narudzbina = vozila.id_vozila where id_user = {$_SESSION['id_user']}";
        
@@ -216,6 +219,10 @@ if($_SESSION['id_user']==9)
                         foreach ($products as $key => $value) {
                             $id=$value['id_bought'];
                             echo ' <div class="col">';
+                            
+                             if (isset($value['firstname'])) 
+                            { echo ' <p>'.$value['firstname'].'<p>';
+                            }
                                echo '  <p>'.$value['naziv_hrane'].'<p>
                                 <p>  '.$value['ukupnaCena'].'  $</p>
                                
